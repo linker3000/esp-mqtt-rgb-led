@@ -26,6 +26,9 @@
 
 // MQTT Topics
 #define CONFIG_MQTT_TOPIC_STATE "home/rgb1"
+//NK
+#define CONFIG_MQTT_TOPIC_STATE_HEX "home/hexrgb1"
+
 #define CONFIG_MQTT_TOPIC_SET "home/rgb1/set"
 
 #define CONFIG_MQTT_PAYLOAD_ON "ON"

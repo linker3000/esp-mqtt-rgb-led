@@ -1,5 +1,19 @@
 # ESP8266 MQTT RGB LEDs Using JSON for Home Assistant
 
+## Forked by N. Kendrick (Linker3000) 29-May-2017
+
+```
+NK Changes:
+
+29-May-2017: Added a config option to invert the RGB drive output so that it runs from full off (255) to full on (0) rather than 0-255. This is useful
+             for hookups that need inverted driving - for example, a single RGB LED connected via current limiting resistors directly to the GPIO pins
+
+			 Added a separate MQTT message that outputs the state of the light in a plain hex value (#RRGGBB), which is easier to use with color pickers
+			 etc. that do not support inbound JSON payloads.
+```
+
+Original text begins here:			 
+			 
 This project adds an easy way to create DIY lighting for [Home Assistant](https://home-assistant.io/), an amazing, extensible, open-source home automation system.
 
 I was frustrated that the built-in MQTT light didn't support transitions (fading between colors/brightnesses), and that it uses multiple separate calls to set the different values (state (on/off), brightness, color), so I decided to make my own version. As of version 0.26, the [MQTT JSON light platform](https://home-assistant.io/components/light.mqtt_json/) has been merged into Home Assistant.

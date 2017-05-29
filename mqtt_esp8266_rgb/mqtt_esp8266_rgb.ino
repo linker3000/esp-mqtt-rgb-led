@@ -10,11 +10,12 @@
  * Changes:
  * 
  * 25-May-2017: Added output invert option
+ * 25-May-2017: Additional MQTT publish of LED state as message 'hex'
  * 
  */
 
 // Set configuration options for pins, WiFi, and MQTT in the following file:
-#include "config-sample.h"
+#include "config.h"
 
 // https://github.com/bblanchon/ArduinoJson
 #include <ArduinoJson.h>
@@ -42,6 +43,9 @@ const char* client_id = CONFIG_MQTT_CLIENT_ID;
 
 // Topics
 const char* light_state_topic = CONFIG_MQTT_TOPIC_STATE;
+//NK
+const char* light_state_topic_hex = CONFIG_MQTT_TOPIC_STATE_HEX;
+
 const char* light_set_topic = CONFIG_MQTT_TOPIC_SET;
 
 const char* on_cmd = CONFIG_MQTT_PAYLOAD_ON;
@@ -94,7 +98,7 @@ void setup() {
 
   analogWriteRange(255);
 
-  // Serial.begin(115200);
+  //Serial.begin(115200);
   setup_wifi();
   client.setServer(mqtt_server, 1883);
   client.setCallback(callback);
@@ -243,6 +247,11 @@ bool processJson(char* message) {
 }
 
 void sendState() {
+  
+  String rhex = String(2);
+  String ghex = String(2);
+  String bhex = String(2);
+  
   StaticJsonBuffer<BUFFER_SIZE> jsonBuffer;
 
   JsonObject& root = jsonBuffer.createObject();
@@ -259,6 +268,19 @@ void sendState() {
   root.printTo(buffer, sizeof(buffer));
 
   client.publish(light_state_topic, buffer, true);
+  
+// NK also publish a topic in hex #RRGGBB to update color
+// pickers and suchlike  
+
+   rhex = String(red,HEX);
+   if (rhex.length() == 1) { rhex = '0' + rhex;}
+   ghex = String(green,HEX);
+   if (ghex.length() == 1) { ghex = '0' + ghex;}
+   bhex = String(blue,HEX);
+   if (bhex.length() == 1) { bhex = '0' + bhex;}
+
+   client.publish(light_state_topic_hex, (char*) ("#" + rhex + ghex + bhex).c_str() , true);
+   Serial.println("Hex topic = #" + rhex + ghex + bhex);
 }
 
 void reconnect() {
