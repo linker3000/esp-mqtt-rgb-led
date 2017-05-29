@@ -22,10 +22,20 @@ Modifications to the original code, plus the Node-Red function make this code ea
 The following resistor values can be used to drive a single RGB LED directly from three GPIO pins and the ESP's 3.3V line (Common anode RGB LED). The calculated resistor values allow an LED current of around 8mA per colour:
 
 Red: (Vf approx 1.7V) = 220R
+
 Green: (Vf approx 3V) = 39R
+
 Blue: (Vf approx 3V) = 39R
 
-NB: The maximum rated source/sink current per ESP8266 GPIO pin is 13mA.
+Notes:
+
+The maximum rated source/sink current per ESP8266 GPIO pin is 13mA.
+
+For a common anode LED, make sure invert mode is enabled in config.h:
+
+```
+ #define MODE_INVERT 1
+```
 
 ===================================================
 

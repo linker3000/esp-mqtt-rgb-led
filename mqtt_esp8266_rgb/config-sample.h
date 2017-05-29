@@ -10,8 +10,11 @@
 #define CONFIG_PIN_GREEN 2
 #define CONFIG_PIN_BLUE 3
 
-//NK Set 1 to invert output where brightness runs 255-0 rather than 0-255
-#define MODE_INVERT 1
+// NK Set 1 to invert output where brightness runs 255-0 rather than 0-255
+// example - for a common anode LED connected to the ESP (via current
+// limiting resistors
+
+#define MODE_INVERT 0
 
 // WiFi
 #define CONFIG_WIFI_SSID "{WIFI-SSID}"
