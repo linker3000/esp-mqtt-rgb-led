@@ -7,8 +7,8 @@ NK Changes:
 
 29-May-2017: Added a config option to invert the RGB drive output so that it runs from full off (255)
              to full on (0) rather than 0-255. This is useful for hookups that need inverted 
-             driving - for example, a single RGB LED connected via current limiting resistors directly
-             to the GPIO pins
+             driving - for example, a single commn anode RGB LED connected via current limiting 
+             resistors directly to the GPIO pins.
 
 29-May-2017: Added a separate MQTT message that outputs the state of the light in a plain hex value 
              (#RRGGBB), which is easier to use with color pickers etc. that do not support inbound 
