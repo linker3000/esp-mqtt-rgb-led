@@ -10,6 +10,9 @@
 #define CONFIG_PIN_GREEN 2
 #define CONFIG_PIN_BLUE 3
 
+//NK Set 1 to invert output where brightness runs 255-0 rather than 0-255
+#define MODE_INVERT 1
+
 // WiFi
 #define CONFIG_WIFI_SSID "{WIFI-SSID}"
 #define CONFIG_WIFI_PASS "{WIFI-PASSWORD}"

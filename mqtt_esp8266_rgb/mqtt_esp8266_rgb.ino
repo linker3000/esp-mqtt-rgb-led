@@ -4,10 +4,17 @@
  * This file is for RGB (red, green, and blue) lights.
  * 
  * See https://github.com/corbanmailloux/esp-mqtt-rgb-led
+ * 
+ * Modified by N. Kendrick (Linker3000)
+ * 
+ * Changes:
+ * 
+ * 25-May-2017: Added output invert option
+ * 
  */
 
 // Set configuration options for pins, WiFi, and MQTT in the following file:
-#include "config.h"
+#include "config-sample.h"
 
 // https://github.com/bblanchon/ArduinoJson
 #include <ArduinoJson.h>
@@ -16,6 +23,9 @@
 
 // http://pubsubclient.knolleary.net/
 #include <PubSubClient.h>
+
+//NK New const for inverted output mode
+const int modeInvert = MODE_INVERT;
 
 const int redPin = CONFIG_PIN_RED;
 const int txPin = 1; // On-board blue LED
@@ -270,10 +280,22 @@ void reconnect() {
 }
 
 void setColor(int inR, int inG, int inB) {
-  analogWrite(redPin, inR);
-  analogWrite(greenPin, inG);
-  analogWrite(bluePin, inB);
 
+//NK New code to write inverted output levels if needed
+
+  if (modeInvert == 1)
+  {
+    analogWrite(redPin, 255 - inR);
+    analogWrite(greenPin, 255 - inG);
+    analogWrite(bluePin, 255 - inB);
+  }
+  else
+  {
+    analogWrite(redPin, inR);
+    analogWrite(greenPin, inG);
+    analogWrite(bluePin, inB);
+  }
+  
   Serial.println("Setting LEDs:");
   Serial.print("r: ");
   Serial.print(inR);
