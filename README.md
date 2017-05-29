@@ -15,6 +15,10 @@ NK Changes:
              JSON payloads.
 ```
 
+Modifications to the original code, plus the Node-Red function make this code easier to use with other MQTT-oriented systems - for example, I am using it to create a standalone desk light based on an ESP8266 and a single RGB LED that will accept colour-based status messages from a network monitoring system based on Nagios (Centreon), so that the light (probably based on a ping pong ball!) will glow from green through amber to red according to the overall state of the systems being monitored!
+
+==================================================================================================
+
 Original text begins here:			 
 			 
 This project adds an easy way to create DIY lighting for [Home Assistant](https://home-assistant.io/), an amazing, extensible, open-source home automation system.
