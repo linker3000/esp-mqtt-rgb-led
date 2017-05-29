@@ -9,7 +9,7 @@ NK Changes:
              for hookups that need inverted driving - for example, a single RGB LED connected via current limiting resistors directly to the GPIO pins
 
 29-May-2017: Added a separate MQTT message that outputs the state of the light in a plain hex value (#RRGGBB), which is easier to use with color pickers
-			 etc. that do not support inbound JSON payloads.
+             etc. that do not support inbound JSON payloads.
 ```
 
 Original text begins here:			 
