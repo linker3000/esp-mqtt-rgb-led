@@ -5,8 +5,8 @@
 // https://github.com/corbanmailloux/esp-mqtt-rgb-led also forked as
 // https://github.com/linker3000/esp-mqtt-rgb-led with added functionality.
 
-if ((msg.payload.toString().length != 7) &&
-    (msg.payload.toString().substring(0.1) != "#"))
+if ((msg.payload.toString().length != 7) ||
+    (msg.payload.toString().substring(0,1) != "#"))
   {return null;}
 
 msg.payload = '{"state": "ON","brightness": 255,"color": {' + 
