@@ -37,6 +37,8 @@ For a common anode LED, make sure invert mode is enabled in config.h:
  #define MODE_INVERT 1
 ```
 
+HEXtoRGBMsg.txt contains the (javascript) code for a Node-Red function that takes a hex RGB LED value string (#RRGGBB) and outputs a JSON-formatted MQTT payload for the LED .
+
 ===================================================
 
 Original text begins here:			 
